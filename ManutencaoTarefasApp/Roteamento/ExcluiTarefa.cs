@@ -28,7 +28,7 @@ namespace ManutencaoTarefasApp.Roteamento
 
         [FunctionName("ExcluirTarefa")]
         public async Task<IActionResult> ExcluirTarefa([HttpTrigger(authLevel: AuthorizationLevel.Anonymous,
-                                               methods: "PATCH",
+                                               methods: "DELETE",
                                                Route = "{id}/tarefas")]
                                      HttpRequest request)
         {
