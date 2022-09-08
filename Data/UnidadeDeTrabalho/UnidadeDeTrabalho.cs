@@ -19,12 +19,12 @@ namespace Data.UnidadeDeTrabalho
             this.TarefasRepositorio = new TarefasRepositorio(contexto);
         }
 
-        public async void AbrirTransacao() => this.dbContextTransaction_ = await this.contexto_.Database.BeginTransactionAsync();
+        public void AbrirTransacao() => this.dbContextTransaction_ = this.contexto_.Database.BeginTransaction();
 
-        public async void CommitTransacao()
+        public void CommitTransacao()
         {
             if (this.dbContextTransaction_ != null)
-                await this.dbContextTransaction_.CommitAsync();
+                this.dbContextTransaction_.Commit();
         }
 
         public void Dispose()
@@ -36,10 +36,10 @@ namespace Data.UnidadeDeTrabalho
                 this.dbContextTransaction_.Dispose();
         }
 
-        public async void RollBackTransacao()
+        public void RollBackTransacao()
         {
             if (this.dbContextTransaction_ != null)
-                await this.dbContextTransaction_.RollbackAsync();
+                this.dbContextTransaction_.Rollback();
         }
     }
 }

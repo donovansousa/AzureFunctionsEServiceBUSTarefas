@@ -9,9 +9,9 @@ namespace Data.Repositorios
 
         public BaseRepositorio(DbContext context) => this.context = context;
 
-        public async void Adicionar(T objeto)
+        public void Adicionar(T objeto)
         {
-            await this.context.Set<T>().AddAsync(objeto);
+            this.context.Set<T>().Add(objeto);
             this.SaveChanges();
         }
 
@@ -27,6 +27,6 @@ namespace Data.Repositorios
             this.SaveChanges();
         }
 
-        protected async void SaveChanges() => await this.context.SaveChangesAsync();
+        protected void SaveChanges() => this.context.SaveChanges();
     }
 }

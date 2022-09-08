@@ -6,7 +6,7 @@ namespace Dominio.Interfaces.Repositorios
     public interface ITarefasRepositorio: IBaseRepositorio<Tarefas>
     {
         IEnumerable<Tarefas> ListarTarefasPeloTitulo(string titulo);
-        Task<Tarefas> ListarTarefaPeloId(int id);
-        IEnumerable<Tarefas> ListarTarefaPelaDescricao(string descricao);
+        bool TituloDaTarefaJaExiste(string titulo);
+        bool DescricaoDaTarefaJaExiste(string descricao);
      }
 }
