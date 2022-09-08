@@ -8,5 +8,6 @@ namespace Dominio.Interfaces.Repositorios
         IEnumerable<Tarefas> ListarTarefasPeloTitulo(string titulo);
         bool TituloDaTarefaJaExiste(string titulo);
         bool DescricaoDaTarefaJaExiste(string descricao);
+        bool IdDaTarefaExiste(int id);
      }
 }

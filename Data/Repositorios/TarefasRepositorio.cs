@@ -13,6 +13,9 @@ namespace Data.Repositorios
         public bool DescricaoDaTarefaJaExiste(string descricao) => this.context
                 .Set<Tarefas>().Any(t => t.Descricao.Equals(descricao));
 
+        public bool IdDaTarefaExiste(int id) => this.context
+                .Set<Tarefas>().Any(t => t.Id == id);
+
         public IEnumerable<Tarefas> ListarTarefasPeloTitulo(string titulo) => this.context.Set<Tarefas>()
                         .Where(t => t.Titulo.Contains(titulo))
                         .Select(t => t).AsEnumerable();
