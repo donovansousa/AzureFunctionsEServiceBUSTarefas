@@ -12,7 +12,7 @@ namespace Aplicacao.Commands.Tarefas.AtualizaTarefa
     {
         private readonly IUnidadeDeTrabalho unidadeDeTrabalho;
 
-        public AtualizaTarefaHandler(UnidadeDeTrabalho unidadeDeTrabalho) => this.unidadeDeTrabalho = unidadeDeTrabalho;
+        public AtualizaTarefaHandler(IUnidadeDeTrabalho unidadeDeTrabalho) => this.unidadeDeTrabalho = unidadeDeTrabalho;
 
         public async Task<IActionResult> Handle(AtualizaTarefaCommand request, CancellationToken cancellationToken)
         {

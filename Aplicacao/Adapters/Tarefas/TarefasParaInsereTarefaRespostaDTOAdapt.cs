@@ -3,7 +3,7 @@ using DominioTarefas = Dominio.Agregados.TarefasAgregado;
 
 namespace Aplicacao.Adapters.Tarefas
 {
-    public class TarefasParaInsereTarefaRespostaDTOAdapt
+    public class TarefasParaInsereTarefaRespostaDTOAdapt : IAdapt<DominioTarefas.Tarefas, InsereTarefaRespostaDTO>
     {
         public InsereTarefaRespostaDTO Adapt(DominioTarefas.Tarefas tarefa)
         {

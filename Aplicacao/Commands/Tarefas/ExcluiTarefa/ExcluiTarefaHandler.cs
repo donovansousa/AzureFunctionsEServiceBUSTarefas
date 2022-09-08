@@ -12,7 +12,7 @@ namespace Aplicacao.Commands.ExcluiTarefa
     {
         private readonly IUnidadeDeTrabalho unidadeDeTrabalho;
 
-        public ExcluiTarefaHandler(UnidadeDeTrabalho unidadeDeTrabalho) => this.unidadeDeTrabalho = unidadeDeTrabalho;
+        public ExcluiTarefaHandler(IUnidadeDeTrabalho unidadeDeTrabalho) => this.unidadeDeTrabalho = unidadeDeTrabalho;
 
         public async Task<IActionResult> Handle(ExcluiTarefaCommand request, CancellationToken cancellationToken)
         {

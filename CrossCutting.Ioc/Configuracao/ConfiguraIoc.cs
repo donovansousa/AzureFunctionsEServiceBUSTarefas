@@ -4,6 +4,7 @@ using Dominio.Interfaces.UnidadeDeTrabalho;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace CrossCutting.Ioc.Configuracao
 {
@@ -26,7 +27,8 @@ namespace CrossCutting.Ioc.Configuracao
 
         private static void ConfigurarMediatR(IServiceCollection services)
         {
-            services.AddMediatR(typeof(Mediator));
+            var assembly = AppDomain.CurrentDomain.Load("Aplicacao");
+            services.AddMediatR(assembly);
         }
     }
 }

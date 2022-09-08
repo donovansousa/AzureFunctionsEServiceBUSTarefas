@@ -13,7 +13,7 @@ namespace Aplicacao.Commands.InsereTarefa
     {
         private readonly IUnidadeDeTrabalho unidadeDeTrabalho;
 
-        public InsereTarefaHandler(UnidadeDeTrabalho unidadeDeTrabalho) => this.unidadeDeTrabalho = unidadeDeTrabalho;
+        public InsereTarefaHandler(IUnidadeDeTrabalho unidadeDeTrabalho) => this.unidadeDeTrabalho = unidadeDeTrabalho;
 
         public async Task<IActionResult> Handle(InsereTarefaCommand request, CancellationToken cancellationToken)
         {

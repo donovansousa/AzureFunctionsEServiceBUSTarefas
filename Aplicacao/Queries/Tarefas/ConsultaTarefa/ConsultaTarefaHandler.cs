@@ -1,4 +1,6 @@
-﻿using Aplicacao.Commands;
+﻿using Aplicacao.Adapters.Tarefas;
+using Aplicacao.Commands;
+using Aplicacao.DTO;
 using Data.UnidadeDeTrabalho;
 using Dominio.Interfaces.UnidadeDeTrabalho;
 using MediatR;
@@ -13,7 +15,7 @@ namespace Aplicacao.Queries.Tarefas.ConsultaTarefa
     {
         private readonly IUnidadeDeTrabalho unidadeDeTrabalho;
 
-        public ConsultaTarefaHandler(UnidadeDeTrabalho unidadeDeTrabalho) => this.unidadeDeTrabalho = unidadeDeTrabalho;
+        public ConsultaTarefaHandler(IUnidadeDeTrabalho unidadeDeTrabalho) => this.unidadeDeTrabalho = unidadeDeTrabalho;
 
         public async Task<IActionResult> Handle(ConsultaTarefaQuery request, CancellationToken cancellationToken)
         {
@@ -26,11 +28,13 @@ namespace Aplicacao.Queries.Tarefas.ConsultaTarefa
                     return await this.ResponderApenasComStatusCode(System.Net.HttpStatusCode.NotFound);
                 }
 
+                List<ListaTarefaDTO> listagemDeTarefas = new TarefasParaListaTarefaDTOAdapt().Adapt(tarefas);
+
                 return await Task.FromResult(new ContentResult()
                 {
                     StatusCode = (int)HttpStatusCode.OK,
                     ContentType = System.Net.Mime.MediaTypeNames.Application.Json,
-                    Content = JsonConvert.SerializeObject(tarefas),
+                    Content = JsonConvert.SerializeObject(listagemDeTarefas),
                 });
             }
             catch (Exception ex)

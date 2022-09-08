@@ -1,5 +1,8 @@
 ﻿using CrossCutting.Ioc.Configuracao;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
+
+[assembly: FunctionsStartup(typeof(ManutencaoTarefasApp.Startup))]
 
 namespace ManutencaoTarefasApp
 {

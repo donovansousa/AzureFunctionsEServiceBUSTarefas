@@ -19,7 +19,7 @@ namespace ManutencaoTarefasApp.Roteamento
                                                  Route = "{titulo}/tarefas")]
                                      HttpRequest request)
         {
-            return await this.mediator_.Send(new ConsultaTarefaQuery() { Titulo = request.Query["titulo"] });
+            return await this.mediator_.Send(new ConsultaTarefaQuery() { Titulo = request.RouteValues["titulo"].ToString() });
         }
     }
 }
