@@ -34,7 +34,21 @@ namespace ManutencaoTarefasApp.Roteamento
         {
             try
             {
-                int id = Convert.ToInt32(request.RouteValues["id"]);
+                int id = 0;
+
+                try
+                {
+                    id = int.Parse(request.RouteValues["id"].ToString());
+                }
+                catch (Exception)
+                {
+                    return new ContentResult()
+                    {
+                        StatusCode = (int)HttpStatusCode.BadRequest,
+                        Content = JsonConvert.SerializeObject(new RespostaValidacaoDTO() { Mensagem = "O id da tarefa é inválido!" }),
+                        ContentType = System.Net.Mime.MediaTypeNames.Application.Json,
+                    };
+                }
 
                 if (id == 0)
                 {
