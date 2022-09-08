@@ -9,19 +9,16 @@ namespace Data.ContextoDB
     {
         private IConfiguration configuration_;
 
-        public ContextoFactory(IConfiguration configuration)
-        {
-            this.configuration_ = configuration;
-        }
+        public ContextoFactory(IConfiguration configuration) => this.configuration_ = configuration;
 
         public Contexto CreateDbContext(string[] args)
         {
             string connectionstring = this.configuration_.GetConnectionString("Conexao");
 
-            return null;
+            DbContextOptionsBuilder dbContextOptionsBuilder = new DbContextOptionsBuilder();
+            dbContextOptionsBuilder.UseSqlServer(connectionstring).EnableDetailedErrors();
 
-
-            //return new Contexto(options);
+            return new Contexto(dbContextOptionsBuilder.Options);
         }
     }
 }

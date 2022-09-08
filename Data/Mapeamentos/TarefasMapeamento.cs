@@ -15,8 +15,8 @@ namespace Data.Mapeamentos
         protected override void CriarColunas(EntityTypeBuilder<Tarefas> builder)
         {
             builder.Property(p => p.Id).HasColumnName("id");
-            builder.Property(p => p.Titulo).HasColumnName("titulo");
-            builder.Property(p => p.Descricao).HasColumnName("descricao");
+            builder.Property(p => p.Titulo).HasColumnName("titulo").HasMaxLength(100).IsUnicode();
+            builder.Property(p => p.Descricao).HasColumnName("descricao").HasMaxLength(1000).IsUnicode();
         }
 
         protected override void CriarTabela(EntityTypeBuilder<Tarefas> builder) => builder.ToTable("tarefas");

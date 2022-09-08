@@ -16,7 +16,7 @@ namespace CrossCutting.Ioc.Configuracao
         }
 
         private static void ConfigurarUnidadeDeTrabalho(IServiceCollection services, IConfiguration configuration)
-        {
+        { 
             services.AddScoped<IUnidadeDeTrabalho>(c =>
             {
                 return new UnidadeDeTrabalho(new ContextoFactory(configuration)
